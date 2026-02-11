@@ -88,6 +88,7 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 				</Box>
 			</Stack>
 		);
+		
 	} else {
 		return (
 			<Stack className="trend-card-box" key={property._id}>
