@@ -22,4 +22,4 @@ export const Messages = {
 	// success messages
 };
 
-const topPropertyRank = 50;
+const topPropertyRank = 2;
