@@ -31,6 +31,7 @@ import 'swiper/css/pagination';
 import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import { GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
 import { T } from '../../libs/types/common';
+import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -126,6 +127,32 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 	/** HANDLERS **/
 	const changeImageHandler = (image: string) => {
 		setSlideImage(image);
+	};
+
+	const likePropertyHandler = async (user: T, id: string) => {
+		try {
+			if (!id) return;
+			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
+			await likeTargetProperty({
+				variables: { input: id },
+			});
+			await getPropertyRefetch({ input: id });
+			await getPropertiesRefetch({
+				input: {
+					page: 1,
+					limit: 4,
+					sort: 'createdAt',
+					direction: Direction.DESC,
+					search: {
+						locationList: [property?.propertyLocation],
+					},
+				},
+			});
+			await sweetTopSmallSuccessAlert('success', 800);
+		} catch (err: any) {
+			console.log('ERROR likePropertyHandler', err.message);
+			sweetMixinErrorAlert(err.message).then();
+		}
 	};
 
 	const commentPaginationChangeHandler = async (event: ChangeEvent<unknown>, value: number) => {
@@ -566,7 +593,11 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 										{destinationProperty.map((property: Property) => {
 											return (
 												<SwiperSlide className={'similar-homes-slide'} key={property.propertyTitle}>
-													<PropertyBigCard property={property} key={property?._id} />
+													<PropertyBigCard
+													 property={property}
+													 likePropertyHandler={likePropertyHandler}
+													 key={property?._id} />
+
 												</SwiperSlide>
 											);
 										})}
