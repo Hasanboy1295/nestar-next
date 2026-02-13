@@ -214,6 +214,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 											property={property}
 											likePropertyHandler={likePropertyHandler}
 											key={property?._id}
+											likeTargetProperty={undefined}
 										/>
 									</div>
 								);
