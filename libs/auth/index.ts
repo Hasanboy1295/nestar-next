@@ -32,6 +32,7 @@ export const logIn = async (nick: string, password: string): Promise<void> => {
 
 const requestJwtToken = async ({
 	nick,
+	
 	password,
 }: {
 	nick: string;
