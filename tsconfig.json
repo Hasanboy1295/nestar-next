@@ -6,7 +6,6 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
-		// "suppressImplicitAnyIndexErrors": true,
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
@@ -14,7 +13,8 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true
+		"incremental": true,
+		"types": ["node"]
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]
