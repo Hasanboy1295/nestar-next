@@ -93,7 +93,6 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 				scroll: false,
 			},
 		);
-		
 		setCurrentPage(value);
 	};
 

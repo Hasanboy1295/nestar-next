@@ -14,7 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 	// @ts-ignore
 	const [theme, setTheme] = useState(createTheme(light));
 	const client = useApollo(pageProps.initialApolloState);
-
+ 
 	return (
 		<ApolloProvider client={client}>
 			<ThemeProvider theme={theme}>

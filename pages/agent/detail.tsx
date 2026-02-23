@@ -179,7 +179,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 				},
 			});
 			await getPropertiesRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('success', 800);
+			await sweetTopSmallSuccessAlert('You liked the property', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
@@ -214,7 +214,6 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 											property={property}
 											likePropertyHandler={likePropertyHandler}
 											key={property?._id}
-											likeTargetProperty={undefined}
 										/>
 									</div>
 								);

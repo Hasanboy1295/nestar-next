@@ -170,7 +170,7 @@ const Filter = (props: FilterType) => {
 							...searchFilter,
 							search: { ...searchFilter.search, locationList: [...(searchFilter?.search?.locationList || []), value] },
 						})}`,
-						{ scroll: false },
+						{ scroll: false  },
 					);
 				} else if (searchFilter?.search?.locationList?.includes(value)) {
 					await router.push(

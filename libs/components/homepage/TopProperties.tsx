@@ -11,9 +11,9 @@ import { Property } from '../../types/property/property';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PROPERTIES } from '../../../apollo/user/query';
 import { T } from '../../types/common';
-import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
-import { Message } from '../../enums/common.enum';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
+import { Message } from '../../enums/common.enum';
+import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
 
 interface TopPropertiesProps {
 	initialInput: PropertiesInquiry;
@@ -142,3 +142,6 @@ TopProperties.defaultProps = {
 };
 
 export default TopProperties;
+function likeTargetProperty(arg0: { variables: { input: string } }) {
+	throw new Error('Function not implemented.');
+}

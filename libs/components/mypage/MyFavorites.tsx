@@ -105,4 +105,3 @@ const MyFavorites: NextPage = () => {
 };
 
 export default MyFavorites;
- 

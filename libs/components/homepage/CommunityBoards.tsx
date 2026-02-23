@@ -21,16 +21,16 @@ const CommunityBoards = () => {
 
 	/** APOLLO REQUESTS **/
 	const {
-		loading: getNewArticlesLoading,
-		data: getNewArticlesData,
-		error: getNewArticlesError,
-		refetch: getNewAriclesRefetch,
+		loading: getNewsArticlesLoading,
+		data: getNewsArticlesData,
+		error: getNewsArticlesError,
+		refetch: getNewsAriclesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
-		variables: { ...searchCommunity, limit: 6, search: { articleCategory: BoardArticleCategory.NEWS } },
+		variables: { input: { ...searchCommunity, limit: 6, search: { articleCategory: BoardArticleCategory.NEWS } } },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setFreeArticles(data?.getBoardArticles?.list);
+			setNewsArticles(data?.getBoardArticles?.list);
 		},
 	});
 
@@ -41,40 +41,12 @@ const CommunityBoards = () => {
 		refetch: getFreeArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
-		variables: { ...searchCommunity, limit: 3, search: { articleCategory: BoardArticleCategory.FREE } },
+		variables: { input: { ...searchCommunity, limit: 3, search: { articleCategory: BoardArticleCategory.FREE } } },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
 			setFreeArticles(data?.getBoardArticles?.list);
 		},
 	});
-
-	// const {
-	// 	loading: getHumorArticlesLoading,
-	// 	data: getHumorArticlesData,
-	// 	error: getHumorArticlesError,
-	// 	refetch: getHumorArticlesRefetch,
-	// } = useQuery(GET_BOARD_ARTICLES, {
-	// 	fetchPolicy: 'network-only',
-	// 	variables: { ...searchCommunity, limit: 6, search: { articleCategory: BoardArticleCategory.HUMOR } },
-	// 	notifyOnNetworkStatusChange: true,
-	// 	onCompleted: (data: T) => {
-	// 		setFreeArticles(data?.getBoardArticles?.list);
-	// 	},
-	// });
-
-	// const {
-	// 	loading: getRecommendArticlesLoading,
-	// 	data: getRecommendArticlesData,
-	// 	error: getRecommendArticlesError,
-	// 	refetch: getRecommendArticlesRefetch,
-	// } = useQuery(GET_BOARD_ARTICLES, {
-	// 	fetchPolicy: 'network-only',
-	// 	variables: { ...searchCommunity, limit: 6, search: { articleCategory: BoardArticleCategory.RECOMMEND } },
-	// 	notifyOnNetworkStatusChange: true,
-	// 	onCompleted: (data: T) => {
-	// 		setFreeArticles(data?.getBoardArticles?.list);
-	// 	},
-	// });
 
 	if (device === 'mobile') {
 		return <div>COMMUNITY BOARDS (MOBILE)</div>;

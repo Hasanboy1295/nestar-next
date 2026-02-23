@@ -147,7 +147,7 @@ export const MemberPanelList = (props: MemberPanelListType) => {
 					{/*@ts-ignore*/}
 					<EnhancedTableHead />
 					<TableBody>
-						{members.length === 0 && (
+						{members?.length === 0 && (
 							<TableRow>
 								<TableCell align="center" colSpan={8}>
 									<span className={'no-data'}>data not found!</span>
@@ -155,8 +155,8 @@ export const MemberPanelList = (props: MemberPanelListType) => {
 							</TableRow>
 						)}
 
-						{members.length !== 0 &&
-							members.map((member: Member, index: number) => {
+						{members?.length !== 0 &&
+							members?.map((member: Member, index: number) => {
 								const member_image = member.memberImage
 									? `${REACT_APP_API_URL}/${member.memberImage}`
 									: '/img/profile/defaultUser.svg';
